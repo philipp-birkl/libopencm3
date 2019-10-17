@@ -756,18 +756,6 @@
 #define RCC_CKGATENR_AHB2APB1_CKEN		(1<<0)
 /*@}*/
 
-/* PLLSAI1 helper macros */
-static inline void rcc_pllsai_enable(void)
-{
-	RCC_CR |= RCC_CR_PLLSAION;
-}
-
-static inline bool rcc_pllsai_ready(void)
-{
-	return (RCC_CR & RCC_CR_PLLSAIRDY) != 0;
-}
-
-
 /* --- Variable definitions ------------------------------------------------ */
 extern uint32_t rcc_ahb_frequency;
 extern uint32_t rcc_apb1_frequency;
@@ -1092,6 +1080,7 @@ void rcc_osc_on(enum rcc_osc osc);
 void rcc_osc_off(enum rcc_osc osc);
 void rcc_css_enable(void);
 void rcc_css_disable(void);
+void rcc_plli2s_config(uint16_t n, uint8_t r);
 void rcc_pllsai_config(uint16_t n, uint16_t p, uint16_t q, uint16_t r);
 void rcc_pllsai_postscalers(uint8_t q, uint8_t r);
 void rcc_set_sysclk_source(uint32_t clk);
